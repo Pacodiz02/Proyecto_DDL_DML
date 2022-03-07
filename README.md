@@ -2,7 +2,7 @@
 
 ## TABLA SOCIOS
 
-| SOCIOS                                                            |
+| SOCIOS         |                                 |                |
 |----------------|---------------------------------|----------------|
 | DNI            | Cadena de caracteres, tamaño 10 | No nulo        |
 | Nombre         | Cadena de caracteres, tamaño 20 | No nulo        |
@@ -11,7 +11,7 @@
 
 ## TABLA LIBROS
 
-| LIBROS                                                     |
+| LIBROS         |                                 |         |
 |----------------|---------------------------------|---------|
 | RefLibro       | Cadena de caracteres, tamaño 10 | No Nulo |
 | Nombre         | Cadena de caracteres, tamaño 30 | No Nulo |

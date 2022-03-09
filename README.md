@@ -1,7 +1,7 @@
 # Proyecto DLL-DML
 
 
-## TABLA SOCIOS
+### TABLA SOCIOS
 
 | SOCIOS         |                                 |                |
 |----------------|---------------------------------|----------------|
@@ -11,7 +11,7 @@
 | Penalizaciones | Número, tamaño 2                | Por defecto, 0 |
 | Teléfono       | Numerico, tamaño 9              |                |
 
-## TABLA LIBROS
+### TABLA LIBROS
 
 | LIBROS         |                                 |                                 |
 |----------------|---------------------------------|---------------------------------|
@@ -23,7 +23,7 @@
 | Editorial      | Cadena de caracteres, tamaño 10 | Letras en mayúscula             |
 
 
-## TABLA EMPLEADOS
+### TABLA EMPLEADOS
 
 | EMPLEADOS |                                 |                                                 |
 |-----------|---------------------------------|-------------------------------------------------|
@@ -34,7 +34,7 @@
 | Género    | Cadena de caracteres, tamaño 1  | M para género masculino, F para género femenino |
 
 
-  ## TABLA ADQUISICIÓN
+ ### TABLA ADQUISICIÓN
 
 | ADQUISICION|                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
@@ -43,7 +43,7 @@
 | FechaAdqui | Fecha                           | Debe de estar en el siglo XXI                   |
 
 
-## TABLA PRESTAMOS
+### TABLA PRESTAMOS
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|

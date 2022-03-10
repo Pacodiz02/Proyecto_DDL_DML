@@ -34,12 +34,22 @@
 | Género    | Cadena de caracteres, tamaño 1  | M para género masculino, F para género femenino |
 
 
+### TABLA PROOVEDORES
+
+| PROOVEDORES |                                 |                     |
+|-------------|---------------------------------|---------------------|
+| **CIF**         | Cadena de caracteres, tamaño 9  | No nulo             |
+| Nombre      | Cadena de caracteres, tamaño 30 | No nulo             |
+| Teléfono    | Cadena de caracteres, tamaño 9  | No se puede repetir |
+| Email       | Cadena de caracteres, tamaño 20 |                     |
+ 
+ 
  ### TABLA ADQUISICIÓN
 
 | ADQUISICION|                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
-| ***DNI_a*** | Cadena de caracteres, tamaño 9  | No nulo                                        |
-| ***RefLibro_a***| Cadena de caracteres, tamaño 10 | No nulo                                    |
+| ***DNI_e*** | Cadena de caracteres, tamaño 9  | No nulo                                        |
+| ***RefLibro_l***| Cadena de caracteres, tamaño 10 | No nulo                                    |
 | FechaAdqui | Fecha                           | Debe de estar en el siglo XXI                   |
 
 
@@ -47,10 +57,18 @@
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***DNI_p***      | Cadena de caracteres, tamaño 9  | No Nulo      |
-| ***RefLibro_p*** | Cadena de caracteres, tamaño 10 | No Nulo      |
+| ***DNI_s***      | Cadena de caracteres, tamaño 9  | No Nulo      |
+| ***RefLibro_l*** | Cadena de caracteres, tamaño 10 | No Nulo      |
 | FechaPrestamo | Fecha                           | No Nulo         |
 | Duración      | Numérico, tamaño 2              | Por defecto, 24 |
+
+
+### TABLA PROOV
+
+| PROOV         |                                 |                 |
+|---------------|---------------------------------|-----------------|
+| ***CIF_p***      | Cadena de caracteres, tamaño 9  | No Nulo      |
+| ***RefLibro_l*** | Cadena de caracteres, tamaño 10 | No Nulo      |
 
 
 

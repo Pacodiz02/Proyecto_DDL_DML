@@ -44,13 +44,13 @@
 | Email       | Cadena de caracteres, tamaño 20 |                     |
  
  
- ### TABLA ADQUISICIÓN
+ ### TABLA ATENCIÓN
 
-| ADQUISICION|                                 |                                                 |
+| ATENCION   |                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
 | ***DNI_e*** | Cadena de caracteres, tamaño 9  | No nulo                                        |
-| ***RefLibro_l***| Cadena de caracteres, tamaño 10 | No nulo                                    |
-| FechaAdqui | Fecha                           | Debe de estar en el siglo XXI                   |
+| ***DNI_s***| Cadena de caracteres, tamaño 10 | No nulo                                    |
+| FechaAten | Fecha                           | Debe de estar en el siglo XXI                   |
 
 
 ### TABLA PRESTAMOS

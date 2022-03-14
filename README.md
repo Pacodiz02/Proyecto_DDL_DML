@@ -45,7 +45,7 @@
 | AUTORES      |                                 |         |
 |--------------|---------------------------------|---------|
 | ***N_Autor***      | Cadena de caracteres, tamaño 40 | No nulo |
-| ***ISBN_l***     | Fecha                           | No nulo |
+| ***ISBN_libro***     | Cadena de caracteres, tamaño 10 | No nulo |
 
 
 ### TABLA EMPLEADOS
@@ -73,8 +73,8 @@
 
 | ATENCION   |                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
-| ***DNI_e***| Cadena de caracteres, tamaño 9  | No nulo                                         |
-| ***DNI_sa***| Cadena de caracteres, tamaño 10 | No nulo                                         |
+| ***DNI_empA***| Cadena de caracteres, tamaño 9  | No nulo                                         |
+| ***DNI_socioA***| Cadena de caracteres, tamaño 10 | No nulo                                         |
 | FechaAten  | Fecha                           | Debe de estar en el siglo XXI y no nulo         |
 
 
@@ -82,8 +82,8 @@
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***DNI_sp***   | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_p***  | Cadena de caracteres, tamaño 10 | No Nulo         |
+| ***DNI_socioP***   | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_libroP***  | Cadena de caracteres, tamaño 10 | No Nulo         |
 | FechaPrestamo | Fecha                           | No Nulo         |
 | FechaDevolu   | Fecha                           | No nulo         |
 
@@ -92,8 +92,8 @@
 
 | PROOV         |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***CIF_p***   | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_p***  | Cadena de caracteres, tamaño 10 | No Nulo         |
+| ***CIF_Pr***   | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_libroPr***  | Cadena de caracteres, tamaño 10 | No Nulo         |
 
 
 

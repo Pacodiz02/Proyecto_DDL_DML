@@ -74,7 +74,7 @@
 | ATENCION   |                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
 | ***DNI_empA***| Cadena de caracteres, tamaño 9  | No nulo                                         |
-| ***DNI_socioA***| Cadena de caracteres, tamaño 10 | No nulo                                         |
+| ***DNI_socioA***| Cadena de caracteres, tamaño 9 | No nulo                                         |
 | FechaAten  | Fecha                           | Debe de estar en el siglo XXI y no nulo         |
 
 

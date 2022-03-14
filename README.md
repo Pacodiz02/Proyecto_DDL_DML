@@ -1,4 +1,4 @@
-# Proyecto DLL-DML
+## PROYECTO DLL DML
 
 
 ### TABLA SOCIOS
@@ -8,19 +8,44 @@
 | **DNI**        | Cadena de caracteres, tamaño 9  | No nulo        |
 | Nombre         | Cadena de caracteres, tamaño 20 | No nulo        |
 | Direccion      | Cadena de caracteres, tamaño 20 |                |
-| Penalizaciones | Número, tamaño 2                | Por defecto, 0 |
 | Teléfono       | Numerico, tamaño 9              |                |
+
+
+### TABLA PENALIZACIONES
+
+| PENALIZACIONES     |                                   |         |
+|--------------------|-----------------------------------|---------|
+| **Cod_Penali**         | Cadena de caracteres, tamaño 9    | No nulo |
+| **Fecha penalizacion** | Fecha                             | No nulo |
+| Observacion        | Cadena de caracteres, tamaño 1000 |         |
+| _DNISocio_p_       | Cadena de caracteres, tamaño 9    | No nulo |  
 
 ### TABLA LIBROS
 
 | LIBROS         |                                 |                                 |
 |----------------|---------------------------------|---------------------------------|
-| **RefLibro**   | Cadena de caracteres, tamaño 10 | No nulo                         |
+| **ISBN**       | Cadena de caracteres, tamaño 10 | No nulo                         |
 | Nombre         | Cadena de caracteres, tamaño 30 | No nulo                         |
-| Autor          | Cadena de caracteres, tamaño 20 |                                 |
 | Genero         | Cadena de caracteres, tamaño 10 |                                 |
 | AñoPublicacion | Numérico, tamaño 4              |                                 |  
 | Editorial      | Cadena de caracteres, tamaño 10 | Letras en mayúscula             |
+
+
+### TABLA AUTOR
+
+| AUTORES      |                                 |         |
+|--------------|---------------------------------|---------|
+| **Nombre_Autor** | Cadena de caracteres, tamaño 40 | No nulo |
+| FechaNac     | Fecha                           | No nulo |
+| Nacionalidad | Cadena de caracteres, tamaño 15 |         |
+
+
+### TABLA LIBRO_AUTOR
+
+| AUTORES      |                                 |         |
+|--------------|---------------------------------|---------|
+| ***N_Autor***      | Cadena de caracteres, tamaño 40 | No nulo |
+| ***ISBN_l***     | Fecha                           | No nulo |
 
 
 ### TABLA EMPLEADOS
@@ -38,7 +63,7 @@
 
 | PROOVEDORES |                                 |                     |
 |-------------|---------------------------------|---------------------|
-| **CIF**         | Cadena de caracteres, tamaño 9  | No nulo             |
+| **CIF**     | Cadena de caracteres, tamaño 9  | No nulo             |
 | Nombre      | Cadena de caracteres, tamaño 30 | No nulo             |
 | Teléfono    | Cadena de caracteres, tamaño 9  | No se puede repetir |
 | Email       | Cadena de caracteres, tamaño 20 |                     |
@@ -48,27 +73,27 @@
 
 | ATENCION   |                                 |                                                 |
 |------------|---------------------------------|-------------------------------------------------|
-| ***DNI_e*** | Cadena de caracteres, tamaño 9  | No nulo                                        |
-| ***DNI_s***| Cadena de caracteres, tamaño 10 | No nulo                                    |
-| FechaAten | Fecha                           | Debe de estar en el siglo XXI                   |
+| ***DNI_e***| Cadena de caracteres, tamaño 9  | No nulo                                         |
+| ***DNI_sa***| Cadena de caracteres, tamaño 10 | No nulo                                         |
+| FechaAten  | Fecha                           | Debe de estar en el siglo XXI y no nulo         |
 
 
 ### TABLA PRESTAMOS
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***DNI_s***      | Cadena de caracteres, tamaño 9  | No Nulo      |
-| ***RefLibro_l*** | Cadena de caracteres, tamaño 10 | No Nulo      |
+| ***DNI_sp***   | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_p***  | Cadena de caracteres, tamaño 10 | No Nulo         |
 | FechaPrestamo | Fecha                           | No Nulo         |
-| Duración      | Numérico, tamaño 2              | Por defecto, 24 |
+| FechaDevolu   | Fecha                           | No nulo         |
 
 
 ### TABLA PROOV
 
 | PROOV         |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***CIF_p***      | Cadena de caracteres, tamaño 9  | No Nulo      |
-| ***RefLibro_l*** | Cadena de caracteres, tamaño 10 | No Nulo      |
+| ***CIF_p***   | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_p***  | Cadena de caracteres, tamaño 10 | No Nulo         |
 
 
 

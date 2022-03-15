@@ -15,16 +15,25 @@
 
 | PENALIZACIONES     |                                   |         |
 |--------------------|-----------------------------------|---------|
-| **Cod_Penali**         | Cadena de caracteres, tamaño 9    | No nulo |
 | **Fecha penalizacion** | Fecha                             | No nulo |
+| ***DNISocio_p***       | Cadena de caracteres, tamaño 9    | No nulo | 
 | Observacion        | Cadena de caracteres, tamaño 1000 |         |
-| _DNISocio_p_       | Cadena de caracteres, tamaño 9    | No nulo |  
+ 
+ 
+### TABLA EJEMPLARES
+
+| EJEMPLARES        |                                 |         |
+|-------------------|---------------------------------|---------|
+| **ISBN_ejemplar** | Cadena de caracteres, tamaño 13 | No nulo |
+| _DNI_socioE_      | Cadena de caracteres, tamaño 9  | No nulo |
+| _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 | No nulo |
+
 
 ### TABLA LIBROS
 
 | LIBROS         |                                 |                                 |
 |----------------|---------------------------------|---------------------------------|
-| **ISBN**       | Cadena de caracteres, tamaño 10 | No nulo                         |
+| **ISBN**       | Cadena de caracteres, tamaño 13 | No nulo                         |
 | Nombre         | Cadena de caracteres, tamaño 30 | No nulo                         |
 | Genero         | Cadena de caracteres, tamaño 10 |                                 |
 | AñoPublicacion | Numérico, tamaño 4              |                                 |  
@@ -69,22 +78,14 @@
 | Email       | Cadena de caracteres, tamaño 20 |                     |
  
  
- ### TABLA ATENCIÓN
-
-| ATENCION   |                                 |                                                 |
-|------------|---------------------------------|-------------------------------------------------|
-| ***DNI_empA***| Cadena de caracteres, tamaño 9  | No nulo                                         |
-| ***DNI_socioA***| Cadena de caracteres, tamaño 9 | No nulo                                         |
-| FechaAten  | Fecha                           | Debe de estar en el siglo XXI y no nulo         |
-
-
 ### TABLA PRESTAMOS
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***DNI_socioP***   | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_libroP***  | Cadena de caracteres, tamaño 10 | No Nulo         |
-| FechaPrestamo | Fecha                           | No Nulo         |
+| ***DNI_socioP***   | Cadena de caracteres, tamaño 9  | No Nulo    |
+| ***ISBN_ejemplarP***  | Cadena de caracteres, tamaño 13 | No Nulo    |
+| **FechaPrestamo** | Fecha                     | No Nulo         |
+| _DNI_empP_    | Cadena de caracteres, tamaño 9  | No Nulo         |
 | FechaDevolu   | Fecha                           | No nulo         |
 
 
@@ -92,8 +93,8 @@
 
 | PROOV         |                                 |                 |
 |---------------|---------------------------------|-----------------|
-| ***CIF_Pr***   | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_libroPr***  | Cadena de caracteres, tamaño 10 | No Nulo         |
+| ***CIF_Pr***  | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_ejemplarPr***  | Cadena de caracteres, tamaño 13 | No Nulo   |
 
 
 

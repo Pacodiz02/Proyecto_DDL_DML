@@ -1,5 +1,7 @@
 ## PROYECTO DLL DML
 
+Nota: Los caracteres en negrita son PK y cursiva FK.
+
 
 ### TABLA SOCIOS
 

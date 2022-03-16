@@ -26,7 +26,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 
 | EJEMPLARES        |                                 |         |
 |-------------------|---------------------------------|---------|
-| **ISBN_ejemplar** | Cadena de caracteres, tamaño 13 | No nulo |
+| **Cod_ejemplar** | Cadena de caracteres, tamaño 9 | No nulo |
 | _DNI_socioE_      | Cadena de caracteres, tamaño 9  | No nulo |
 | _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 | No nulo |
 
@@ -85,7 +85,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
 | ***DNI_socioP***   | Cadena de caracteres, tamaño 9  | No Nulo    |
-| ***ISBN_ejemplarP***  | Cadena de caracteres, tamaño 13 | No Nulo    |
+| ***Codigo_ejemplarP***  | Cadena de caracteres, tamaño 9 | No Nulo    |
 | **FechaPrestamo** | Fecha                     | No Nulo         |
 | _DNI_empP_    | Cadena de caracteres, tamaño 9  | No Nulo         |
 | FechaDevolu   | Fecha                           | No nulo         |
@@ -96,8 +96,12 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | PROOV         |                                 |                 |
 |---------------|---------------------------------|-----------------|
 | ***CIF_Pr***  | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_ejemplarPr***  | Cadena de caracteres, tamaño 13 | No Nulo   |
+| **Fecha_proov** | Fecha                         | No nulo         |
+| Cantidad      | Cadena de caracteres, tamaño 9  | No Nulo         |
+| ***ISBN_LibroPr***  | Cadena de caracteres, tamaño 13 | No Nulo   |
 
+
++------------------------------------------------------------------------------+
 
 
 Añade las siguientes restricciones, una vez creadas las tablas:

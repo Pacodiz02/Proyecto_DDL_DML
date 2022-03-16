@@ -1,4 +1,4 @@
-## PROYECTO DLL DML
+## PROYECTO DDL DML
 
 Nota: Los caracteres en negrita son PK y cursiva FK.
 

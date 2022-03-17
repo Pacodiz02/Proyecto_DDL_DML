@@ -27,7 +27,6 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | EJEMPLARES        |                                 |         |
 |-------------------|---------------------------------|---------|
 | **Cod_ejemplar** | Cadena de caracteres, tamaño 9   |         |
-| _DNI_socioE_      | Cadena de caracteres, tamaño 9  | No nulo |
 | _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 | No nulo |
 
 

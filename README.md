@@ -52,10 +52,10 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 
 ### TABLA LIBRO_AUTOR
 
-| AUTORES      |                                 |         |
-|--------------|---------------------------------|---------|
-| ***N_Autor***      | Cadena de caracteres, tamaño 40 |     |
-| ***ISBN_libro***     | Cadena de caracteres, tamaño 10 |     |
+| AUTORES      |                                 |
+|--------------|---------------------------------|
+| ***N_Autor***      | Cadena de caracteres, tamaño 40 |
+| ***ISBN_libro***     | Cadena de caracteres, tamaño 10 |
 
 
 ### TABLA EMPLEADOS
@@ -105,7 +105,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 
 Añade las siguientes restricciones, una vez creadas las tablas:
 
-- Añade la columna Sueldo en la tabla EMPLEADOS, Numérico(4) con dos decimales.
+- Añade la columna Sueldo en la tabla EMPLEADOS, Numérico(6) con dos decimales.
 - Modifica la columna AñoPublicacion de la tabla LIBROS cambiando el tipo de dato a fecha.
 - Elimina la columna teléfono de la tabla SOCIOS.
 - La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.

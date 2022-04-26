@@ -15,11 +15,11 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 
 ### TABLA PENALIZACIONES
 
-| PENALIZACIONES     |                                   |         |
-|--------------------|-----------------------------------|---------|
-| **Fecha penalizacion** | Fecha                             |     |
-| ***DNISocio_p***       | Cadena de caracteres, tamaño 9    |     | 
-| Observacion        | Cadena de caracteres, tamaño 1000 |         |
+| PENALIZACIONES     |                                   |
+|--------------------|-----------------------------------|
+| **Fecha penalizacion** | Fecha                             |
+| ***DNISocio_p***       | Cadena de caracteres, tamaño 9    |
+| Observacion        | Cadena de caracteres, tamaño 1000 |
  
  
 ### TABLA EJEMPLARES

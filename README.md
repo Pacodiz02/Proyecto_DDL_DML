@@ -55,7 +55,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | AUTORES      |                                 |
 |--------------|---------------------------------|
 | ***N_Autor***      | Cadena de caracteres, tamaño 40 |
-| ***ISBN_libro***     | Cadena de caracteres, tamaño 10 |
+| ***ISBN_libro***     | Cadena de caracteres, tamaño 13 |
 
 
 ### TABLA EMPLEADOS

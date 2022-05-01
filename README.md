@@ -87,7 +87,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | ***DNI_socioP***   | Cadena de caracteres, tamaño 9  |            |
 | ***Codigo_ejemplarP***  | Cadena de caracteres, tamaño 9 |        |
 | _DNI_empP_    | Cadena de caracteres, tamaño 9  |                 |
-| FechaDevolu   | Fecha                           | No nulo         |
+| FechaDevolucion   | Fecha                           | No nulo         |
 
 
 ### TABLA PROOV

@@ -35,7 +35,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | LIBROS         |                                 |                                 |
 |----------------|---------------------------------|---------------------------------|
 | **ISBN**       | Cadena de caracteres, tamaño 13 |                                 |
-| Nombre         | Cadena de caracteres, tamaño 30 | No nulo                         |
+| Titulo         | Cadena de caracteres, tamaño 30 | No nulo                         |
 | Genero         | Cadena de caracteres, tamaño 10 |                                 |
 | AñoPublicacion | Numérico, tamaño 4              |                                 |  
 | Editorial      | Cadena de caracteres, tamaño 10 | Letras en mayúscula             |

@@ -1,10 +1,14 @@
+-- Creación de las tablas
+
 CREATE TABLE SOCIOS (
 DNI VARCHAR2(9),
 Nombre VARCHAR2(20),
 Direccion VARCHAR2(20),
 Telefono VARCHAR2(9),
+email VARCHAR2(20),
 CONSTRAINT pk_socios PRIMARY KEY (DNI),
-CONSTRAINT nn_Nombre IS NOT NULL(Nombre)
+CONSTRAINT nn_Nombre IS NOT NULL(Nombre),
+CONSTRAINT ck_dni_socios CHECK (DNI REGEXP '^[0-9]{8}[A-Z]{1}')
 );
 
 CREATE TABLE PENALIZACIONES (
@@ -23,7 +27,7 @@ Genero VARCHAR2(10),
 AnioPublicaion NUMBER(4),
 Editorial VARCHAR2(10),
 CONSTRAINT pk_libros PRIMARY KEY (ISBN),
-CONSTRAINT nn_Titulo IS NOT NULL(Titulo)
+CONSTRAINT nn_Titulo IS NOT NULL(Titulo),
 CONSTRAINT ck_mayusculas_editorial CHECK (UPPER(Editorial) = Editorial)
 );
 
@@ -62,13 +66,14 @@ Genero VARCHAR2(1),
 CONSTRAINT pk_empleados PRIMARY KEY (DNI),
 CONSTRAINT ck_Nombre_empleado CHECK (INITCAP(Nombre) = Nombre),
 CONSTRAINT uk_empleados UNIQUE (Direccion),
-CONSTRAINT ck_genero_empleado CHECK (Genero IN ('M', 'F'))
+CONSTRAINT ck_genero_empleado CHECK (Genero IN ('M', 'F')),
+CONSTRAINT ck_dni_socios CHECK (DNI REGEXP '^[0-9]{8}[A-Z]{1}')
 );
 
 
 CREATE TABLE PROOVEDORES (
-CIF VARCHAR(9),
-Nombre VARCHAR(30),
+CIF VARCHAR2(9),
+Nombre VARCHAR2(30),
 Telefono VARCHAR2(9),
 Email VARCHAR2(20),
 CONSTRAINT pk_proovedores PRIMARY KEY (CIF),
@@ -93,8 +98,8 @@ CONSTRAINT nn_FechaDevolucion IS NOT NULL(FechaDevolucion)
 
 CREATE TABLE PROOV (
 Fecha_proov DATE,
-CIF_Pr VARCHAR(9),
-ISBN_LibroPr VARCHAR(13),
+CIF_Pr VARCHAR2(9),
+ISBN_LibroPr VARCHAR2(13),
 Cantidad NUMBER(9),
 CONSTRAINT pk_proov PRIMARY KEY (Fecha_proov, CIF_Pr, ISBN_LibroPr),
 CONSTRAINT fk_proov_proovedores FOREIGN KEY (CIF_Pr) REFERENCES PROOVEDORES(CIF),
@@ -109,11 +114,23 @@ CONSTRAINT nn_Cantidad IS NOT NULL(Cantidad)
 -- Añade la columna Sueldo en la tabla EMPLEADOS, Numérico(6) con dos decimales.
 ALTER TABLE EMPLEADOS ADD COLUMN Sueldo NUMBER(6,2);
 
+-- Añade la columna Direccion en la tabla PROOVEDORES, Cadena de caracterese de longitud 50.
+ALTER TABLE PROOVEDORES ADD COLUMN Direccion VARCHAR2(50);
+
+-- Añade la columna Fecha_nacimiento en la tabla SOCIOS, de tipo Fecha.
+ALTER TABLE SOCIOS ADD COLUMN Fecha_nacimiento DATE;
+
 -- Modifica la columna AñoPublicacion de la tabla LIBROS cambiando el tipo de dato a fecha.
 ALTER TABLE LIBROS MODIFY (AnioPublicacion DATE);
 
--- Elimina la columna teléfono de la tabla SOCIOS.
-ALTER TABLE SOCIOS DROP COLUMN Telefono;
+-- Modifica la columna Observacion de la tabla PENALIZACIONES reduciendola a 500 caracteres.
+ALTER TABLE PENALIZACIONES MODIFY (Observacion VARCHAR2(500));
+
+-- Elimina la columna email de la tabla SOCIOS.
+ALTER TABLE SOCIOS DROP COLUMN email;
+
+-- La Nacionalidad de los autores estará comprendida entre las siguientes: Española, Francesa, Italiana, Americana, Alemana y Japonesa.
+ALTER TABLE AUTOR ADD CONSTRAINT CHECK (Nacionalidad IN ('Española', 'Francesa', 'Italiana', 'Americana', 'Alemana', 'Japonesa'));
 
 -- La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.
 ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (ISBN REGEXP '^[0-9]{13}$');

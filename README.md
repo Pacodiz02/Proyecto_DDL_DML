@@ -24,10 +24,10 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
  
 ### TABLA EJEMPLARES
 
-| EJEMPLARES        |                                 |         |
-|-------------------|---------------------------------|---------|
-| **Cod_ejemplar** | Cadena de caracteres, tamaño 9   |         |
-| _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 | No nulo |
+| EJEMPLARES        |                                 |
+|-------------------|---------------------------------|
+| **Cod_ejemplar** | Cadena de caracteres, tamaño 9   |
+| _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 |
 
 
 ### TABLA LIBROS

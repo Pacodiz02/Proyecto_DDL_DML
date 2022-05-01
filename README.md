@@ -83,9 +83,9 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 
 | PRESTAMOS     |                                 |                 |
 |---------------|---------------------------------|-----------------|
+| **FechaPrestamo** | Fecha                     |                   |
 | ***DNI_socioP***   | Cadena de caracteres, tamaño 9  |            |
 | ***Codigo_ejemplarP***  | Cadena de caracteres, tamaño 9 |        |
-| **FechaPrestamo** | Fecha                     |                   |
 | _DNI_empP_    | Cadena de caracteres, tamaño 9  | No Nulo         |
 | FechaDevolu   | Fecha                           | No nulo         |
 

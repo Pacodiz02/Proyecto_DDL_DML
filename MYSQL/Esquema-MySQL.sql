@@ -137,8 +137,8 @@ ALTER TABLE SOCIOS DROP COLUMN email;
 -- La Nacionalidad de los autores estará comprendida entre las siguientes: Española, Francesa, Italiana, Americana, Alemana y Japonesa.
 ALTER TABLE AUTOR ADD CONSTRAINT ck_nacionalidad_autores CHECK (Nacionalidad IN ('Española', 'Francesa', 'Italiana', 'Americana', 'Alemana', 'Japonesa'));
 
--- La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.
-ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (ISBN REGEXP '^[0-9]{13}$');
+-- El ISBN de los libros tienen el siguiente formato: 978-84-37604-94-7
+ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (ISBN REGEXP '[0-9]{3}\-[0-9]{2}\-[0-9]{5}\-[0-9]{2}\-[0-9]{1}');
 
 -- Elimina la restricción de la columna Dirección de la tabla EMPLEADOS.
 ALTER TABLE EMPLEADOS DROP CONSTRAINT uk_empleados;

@@ -22,7 +22,7 @@ CONSTRAINT ck_fechapenalizaciones CHECK (MONTH(Fecha_penalizacion) NOT BETWEEN 0
 
 
 CREATE TABLE LIBROS (
-ISBN VARCHAR(13),
+ISBN VARCHAR(17),
 Titulo VARCHAR(30) NOT NULL,
 Genero VARCHAR(10),
 AnioPublicacion INT(4),
@@ -34,7 +34,7 @@ CONSTRAINT ck_mayusculas_editorial CHECK (UPPER(Editorial) = Editorial)
 
 CREATE TABLE EJEMPLARES (
 Cod_ejemplar VARCHAR(9),
-ISBNLibroE VARCHAR(13),
+ISBNLibroE VARCHAR(17),
 CONSTRAINT pk_ejemplares PRIMARY KEY (Cod_ejemplar),
 CONSTRAINT fk_ejemplares_libros FOREIGN KEY (ISBNLibroE) REFERENCES LIBROS(ISBN)
 );
@@ -50,7 +50,7 @@ CONSTRAINT ck_FechaNac CHECK (YEAR(FechaNac) > 1900)
 
 CREATE TABLE LIBRO_AUTOR (
 N_Autor VARCHAR(40),
-ISBN_Libro VARCHAR(13),
+ISBN_Libro VARCHAR(17),
 CONSTRAINT pk_libro_autor PRIMARY KEY (N_Autor, ISBN_Libro),
 CONSTRAINT fk_libro_autor_autor FOREIGN KEY (N_Autor) REFERENCES AUTOR(Nombre_autor),
 CONSTRAINT fk_libro_autor_libro FOREIGN KEY (ISBN_Libro) REFERENCES LIBROS(ISBN)
@@ -99,7 +99,7 @@ CONSTRAINT ck_fechadevolucion CHECK (FechaDevolucion > FechaPrestamo)
 CREATE TABLE PROOV (
 Fecha_proov DATE,
 CIF_Pr VARCHAR(9),
-ISBN_LibroPr VARCHAR(13),
+ISBN_LibroPr VARCHAR(17),
 Cantidad INT(9) DEFAULT 1 NOT NULL,
 CONSTRAINT pk_proov PRIMARY KEY (Fecha_proov, CIF_Pr, ISBN_LibroPr),
 CONSTRAINT fk_proov_proovedores FOREIGN KEY (CIF_Pr) REFERENCES PROOVEDORES(CIF),

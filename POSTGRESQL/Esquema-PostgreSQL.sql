@@ -26,11 +26,11 @@ CREATE TABLE LIBROS (
 ISBN VARCHAR(13),
 Titulo VARCHAR(30),
 Genero VARCHAR(10),
-AnioPublicacion INT(4),
+AnioPublicacion INT,
 Editorial VARCHAR(10),
 CONSTRAINT pk_libros PRIMARY KEY (ISBN),
 CONSTRAINT nn_Titulo CHECK(Titulo IS NOT NULL),
-CONSTRAINT ck_mayusculas_editorial CHECK (Editorial ~ '[A-Z]{10}'),
+CONSTRAINT ck_mayusculas_editorial CHECK (Editorial ~ '[A-Z]{10}')
 );
 
 
@@ -70,7 +70,7 @@ CONSTRAINT pk_empleados PRIMARY KEY (DNI),
 CONSTRAINT ck_Nombre_empleado CHECK (Nombre ~ '^[A-Z]\.*[A-Z]\.'),
 CONSTRAINT uk_empleados UNIQUE (Direccion),
 CONSTRAINT ck_genero_empleado CHECK (Genero IN ('M', 'F')),
-CONSTRAINT ck_dni_empleados CHECK (DNI ~ '^[0-9]{8}[A-Z]{1}'))
+CONSTRAINT ck_dni_empleados CHECK (DNI ~ '^[0-9]{8}[A-Z]{1}')
 );
 
 
@@ -82,7 +82,7 @@ Email VARCHAR(20),
 CONSTRAINT pk_proovedores PRIMARY KEY (CIF),
 CONSTRAINT nn_Nombre_proovedor CHECK (Nombre IS NOT NULL),
 CONSTRAINT uk_proovedores UNIQUE (Telefono),
-CONSTRAINT ck_telefono_proovedor CHECK (Telefono ~ '^[9]{1}[0-9]{8}'))
+CONSTRAINT ck_telefono_proovedor CHECK (Telefono ~ '^[9]{1}[0-9]{8}')
 );
 
 
@@ -105,7 +105,7 @@ CREATE TABLE PROOV (
 Fecha_proov DATE,
 CIF_Pr VARCHAR(9),
 ISBN_LibroPr VARCHAR(13),
-Cantidad NUMBER(9) DEFAULT 1,
+Cantidad INT DEFAULT 1,
 CONSTRAINT pk_proov PRIMARY KEY (Fecha_proov, CIF_Pr, ISBN_LibroPr),
 CONSTRAINT fk_proov_proovedores FOREIGN KEY (CIF_Pr) REFERENCES PROOVEDORES(CIF),
 CONSTRAINT fk_proov_libros FOREIGN KEY (ISBN_LibroPr) REFERENCES LIBROS(ISBN),
@@ -129,27 +129,29 @@ ALTER TABLE SOCIOS ADD Fecha_nacimiento DATE;
 ALTER TABLE EMPLEADOS ADD tipo VARCHAR(15);
 
 -- Modifica la columna tipo en la tabla EMPLEADOS y pon por defecto 'TEMPORAL'.
-ALTER TABLE EMPLEADOS ALTER COLUMN tipo DEFAULT 'TEMPORAL';
+ALTER TABLE EMPLEADOS ALTER COLUMN tipo SET DEFAULT 'TEMPORAL';
 
 -- Modifica la columna AñoPublicacion de la tabla LIBROS cambiando el tipo de dato a fecha.
-ALTER TABLE LIBROS ALTER COLUMN AnioPublicacion DATE;
+-- Postgres no nos permite convertir el campo a fecha así que lo eliminaremos y lo añadiremos de nuevo con el campo en tipo fecha.
+ALTER TABLE LIBROS DROP COLUMN Aniopublicacion;
+ALTER TABLE LIBROS ADD Aniopublicacion DATE;
 
 -- Modifica la columna Observacion de la tabla PENALIZACIONES reduciendola a 500 caracteres.
-ALTER TABLE PENALIZACIONES ALTER COLUMN Observacion VARCHAR(500);
+ALTER TABLE PENALIZACIONES ALTER COLUMN Observacion TYPE VARCHAR(500);
 
 -- Elimina la columna email de la tabla SOCIOS.
-ALTER TABLE SOCIOS DROP COLUMN email VARCHAR(20);
+ALTER TABLE SOCIOS DROP COLUMN email;
 
 -- La Nacionalidad de los autores estará comprendida entre las siguientes: Española, Francesa, Italiana, Americana, Alemana y Japonesa.
 ALTER TABLE AUTOR ADD CONSTRAINT ck_nacionalidad_autores CHECK (Nacionalidad IN ('Española', 'Francesa', 'Italiana', 'Americana', 'Alemana', 'Japonesa'));
 
 -- La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.
-ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (ISBN ~ '^[0-9]{13}$'));
+ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (ISBN ~ '^[0-9]{13}$');
 
 -- Elimina la restricción de la columna Dirección de la tabla EMPLEADOS.
 ALTER TABLE EMPLEADOS DROP CONSTRAINT uk_empleados;
 
--- Desactiva la restricción de la columna Editorial de la tabla LIBROS.(En MySQL no nos deja deshabilitar la restricción, tenenemos que eliminarla.)
+-- Desactiva la restricción de la columna Editorial de la tabla LIBROS.(En PostgreSQL no nos deja deshabilitar la restricción, tenenemos que eliminarla.)
 ALTER TABLE LIBROS DROP CONSTRAINT ck_mayusculas_editorial;
 -- Para añadirla acrtivarla de nuevo tendremos que añadirle con:
 ALTER TABLE LIBROS ADD CONSTRAINT ck_mayusculas_editorial CHECK (Editorial ~ '[A-Z]{10}');

@@ -23,7 +23,7 @@ CONSTRAINT ck_fechapenalizaciones CHECK (TO_CHAR(Fecha_penalizacion, 'MM') NOT B
 
 
 CREATE TABLE LIBROS (
-ISBN VARCHAR2(13),
+ISBN VARCHAR2(17),
 Titulo VARCHAR2(30),
 Genero VARCHAR2(10),
 AnioPublicacion NUMBER(4),
@@ -36,7 +36,7 @@ CONSTRAINT ck_mayusculas_editorial CHECK (UPPER(Editorial) = Editorial)
 
 CREATE TABLE EJEMPLARES (
 Cod_ejemplar VARCHAR2(9),
-ISBNLibroE VARCHAR2(13),
+ISBNLibroE VARCHAR2(17),
 CONSTRAINT pk_ejemplares PRIMARY KEY (Cod_ejemplar),
 CONSTRAINT fk_ejemplares_libros FOREIGN KEY (ISBNLibroE) REFERENCES LIBROS(ISBN)
 );
@@ -53,7 +53,7 @@ CONSTRAINT ck_FechaNac CHECK (TO_CHAR(FechaNac, 'YYYY') > '1900')
 
 CREATE TABLE LIBRO_AUTOR (
 N_Autor VARCHAR2(40),
-ISBN_Libro VARCHAR2(13),
+ISBN_Libro VARCHAR2(17),
 CONSTRAINT pk_libro_autor PRIMARY KEY (N_Autor, ISBN_Libro),
 CONSTRAINT fk_libro_autor_autor FOREIGN KEY (N_Autor) REFERENCES AUTOR(Nombre_autor),
 CONSTRAINT fk_libro_autor_libro FOREIGN KEY (ISBN_Libro) REFERENCES LIBROS(ISBN)
@@ -104,7 +104,7 @@ CONSTRAINT ck_fechadevolucion CHECK (FechaDevolucion > FechaPrestamo)
 CREATE TABLE PROOV (
 Fecha_proov DATE,
 CIF_Pr VARCHAR2(9),
-ISBN_LibroPr VARCHAR2(13),
+ISBN_LibroPr VARCHAR2(17),
 Cantidad NUMBER(9) DEFAULT 1,
 CONSTRAINT pk_proov PRIMARY KEY (Fecha_proov, CIF_Pr, ISBN_LibroPr),
 CONSTRAINT fk_proov_proovedores FOREIGN KEY (CIF_Pr) REFERENCES PROOVEDORES(CIF),
@@ -138,17 +138,65 @@ ALTER TABLE LIBROS MODIFY (AnioPublicacion DATE);
 ALTER TABLE PENALIZACIONES MODIFY (Observacion VARCHAR2(500));
 
 -- Elimina la columna email de la tabla SOCIOS.
-ALTER TABLE SOCIOS DROP COLUMN email VARCHAR2(20);
+ALTER TABLE SOCIOS DROP COLUMN email;
 
 -- La Nacionalidad de los autores estará comprendida entre las siguientes: Española, Francesa, Italiana, Americana, Alemana y Japonesa.
 ALTER TABLE AUTOR ADD CONSTRAINT ck_nacionalidad_autores CHECK (Nacionalidad IN ('Española', 'Francesa', 'Italiana', 'Americana', 'Alemana', 'Japonesa'));
 
--- La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.
-ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (REGEXP_LIKE(ISBN, '^[0-9]{13}$'));
+-- El ISBN de los libros tienen el siguiente formato: 978-84-37604-94-7
+ALTER TABLE LIBROS ADD CONSTRAINT ck_ISBN_libros CHECK (REGEXP_LIKE(ISBN, '[0-9]{3}\-[0-9]{2}\-[0-9]{5}\-[0-9]{2}\-[0-9]{1}'));
 
 -- Elimina la restricción de la columna Dirección de la tabla EMPLEADOS.
 ALTER TABLE EMPLEADOS DROP CONSTRAINT uk_empleados;
 
 -- Desactiva la restricción de la columna Editorial de la tabla LIBROS.
 ALTER TABLE LIBROS DISABLE CONSTRAINT ck_mayusculas_editorial;
+
+
+
+--+------------------------------------INSERTS-----------------------------------------+--
+
+-- Tabla SOCIOS
+
+-- Plantilla: INSERT INTO SOCIOS VALUES ('DNI', 'Nombre', 'Apellidos', 'Direccion', 'Telefono', 'Fecha_nacimiento');
+
+INSERT INTO SOCIOS VALUES ('12345678A', 'Juan Perez', 'C/Falsa 123', '912345678', TO_DATE('01/01/1990', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('43210845B', 'Paco Diz', 'C/Malaga 1', '423085866', TO_DATE('04/06/2000', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('98765432C', 'Maria Lopez', 'C/Utrera 4', '574356768', TO_DATE('11/07/1999', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('88465632D', 'Jose Berlanga', 'C/Paso de la Arena', '634856394', TO_DATE('14/03/1998', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('27642461E', 'Ana Roldan', 'C/Domingo', '683657345', TO_DATE('20/05/1997', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('87645321F', 'Juan Urerña', 'C/Real 3', '643764864', TO_DATE('28/08/2007', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('98745542G', 'Pedro Rodrigez', 'C/Sevilla 3', '746346564', TO_DATE('28/04/2005', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('47765232H', 'Rocio Jimenez', 'C/German 7', '648364683', TO_DATE('24/12/1996', 'DD/MM/YYYY'));
+INSERT INTO SOCIOS VALUES ('54372666K', 'Lola Perez','C/Lucio 3', '643764874', TO_DATE('15/09/1997', 'DD/MM/YYYY'));
+
+-- INSERT INTO SOCIOS VALUES ('86647321L', 'Beatriz Ramirez', 'C/Santiago 3', '678354029', TO_DATE('29/08/2001', 'DD/MM/YYYY'));
+
+
+-- Tabla PENALIZACIONES
+
+-- Plantilla: INSERT INTO PENALIZACIONES VALUES ('Fecha_penalizacion', 'DNISOCIOP', 'Observacion');
+
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('18/03/2003'), '12345678A', 'Sin observaciones');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('20/03/2003'), '43210845B', 'Sin observaciones');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('22/03/2006'), '98765432C', 'No entregó el libro');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('27/03/2006'), '88465632D', 'Sin observaciones');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('29/03/2005'), '27642461E', 'Sin pago');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('30/07/2005'), '87645321F', 'Sin observaciones');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('12/08/2007'), '98745542G', 'Sin pago');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('12/08/2007'), '47765232H', 'No entregó el libro');
+INSERT INTO PENALIZACIONES VALUES (TO_DATE('17/11/2009'), '54372666K', 'Sin observaciones');
+
+-- INSERT INTO PENALIZACIONES VALUES (TO_DATE('20/12/2009'), '86647321L', 'Sin observaciones');
+
+
+-- Tabla LIBROS
+
+-- Plantilla: INSERT INTO LIBROS VALUES ('ISBN', 'Titulo', 'Genero', 'AnioPublicacion', 'Editorial');
+
+INSERT INTO LIBROS VALUES('978-84-37604-94-7', 'El Quijote de la Mancha', 'Novela', '1937', 'Juventud');
+INSERT INTO LIBROS VALUES('978-92-57508-94-8', 'La Odisea', 'Novela', '1923', 'Combel');
+INSERT INTO LIBROS VALUES('978-99-38201-94-0', 'El Señor de los Anillos', 'Novela', '1996', 'Tirant Lo Blanc');
+INSERT INTO LIBROS VALUES('978-95-77894-94-1', 'La Comedia de las Almas', 'Novela', '1956', 'Nordical');
+INSERT INTO LIBROS VALUES('978-92-75486-94-2', 'El Principito', 'Novela', '1969', 'Salamandra');
 

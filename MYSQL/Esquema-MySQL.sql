@@ -75,7 +75,7 @@ CREATE TABLE PROOVEDORES (
 CIF VARCHAR(9),
 Nombre VARCHAR(30) NOT NULL,
 Telefono VARCHAR(9),
-Email VARCHAR(20),
+Email VARCHAR(40),
 CONSTRAINT pk_proovedores PRIMARY KEY (CIF),
 CONSTRAINT uk_proovedores UNIQUE (Telefono),
 CONSTRAINT ck_telefono_proovedor CHECK (Telefono REGEXP '^[9]{1}[0-9]{8}')

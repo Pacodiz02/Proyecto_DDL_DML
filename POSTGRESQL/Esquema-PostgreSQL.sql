@@ -78,7 +78,7 @@ CREATE TABLE PROOVEDORES (
 CIF VARCHAR(9),
 Nombre VARCHAR(30),
 Telefono VARCHAR(9),
-Email VARCHAR(20),
+Email VARCHAR(40),
 CONSTRAINT pk_proovedores PRIMARY KEY (CIF),
 CONSTRAINT nn_Nombre_proovedor CHECK (Nombre IS NOT NULL),
 CONSTRAINT uk_proovedores UNIQUE (Telefono),

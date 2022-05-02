@@ -131,9 +131,6 @@ ALTER TABLE EMPLEADOS ADD tipo VARCHAR2(15);
 -- Modifica la columna tipo en la tabla EMPLEADOS y pon por defecto 'TEMPORAL'.
 ALTER TABLE EMPLEADOS MODIFY (tipo DEFAULT 'TEMPORAL');
 
--- Modifica la columna AñoPublicacion de la tabla LIBROS cambiando el tipo de dato a fecha.
-ALTER TABLE LIBROS MODIFY (AnioPublicacion DATE);
-
 -- Modifica la columna Observacion de la tabla PENALIZACIONES reduciendola a 500 caracteres.
 ALTER TABLE PENALIZACIONES MODIFY (Observacion VARCHAR2(500));
 
@@ -194,9 +191,59 @@ INSERT INTO PENALIZACIONES VALUES (TO_DATE('17/11/2009'), '54372666K', 'Sin obse
 
 -- Plantilla: INSERT INTO LIBROS VALUES ('ISBN', 'Titulo', 'Genero', 'AnioPublicacion', 'Editorial');
 
-INSERT INTO LIBROS VALUES('978-84-37604-94-7', 'El Quijote de la Mancha', 'Novela', '1937', 'Juventud');
-INSERT INTO LIBROS VALUES('978-92-57508-94-8', 'La Odisea', 'Novela', '1923', 'Combel');
-INSERT INTO LIBROS VALUES('978-99-38201-94-0', 'El Señor de los Anillos', 'Novela', '1996', 'Tirant Lo Blanc');
-INSERT INTO LIBROS VALUES('978-95-77894-94-1', 'La Comedia de las Almas', 'Novela', '1956', 'Nordical');
-INSERT INTO LIBROS VALUES('978-92-75486-94-2', 'El Principito', 'Novela', '1969', 'Salamandra');
+INSERT INTO LIBROS VALUES ('978-84-37604-94-7', 'El Quijote de la Mancha', 'Novela', '1937', 'Juventud');
+INSERT INTO LIBROS VALUES ('978-92-57508-94-8', 'La Odisea', 'Novela', '1923', 'Combel');
+INSERT INTO LIBROS VALUES ('978-99-38201-94-0', 'El Señor de los Anillos', 'Novela', '1996', 'Tirant Lo Blanc');
+INSERT INTO LIBROS VALUES ('978-95-77894-94-1', 'La Comedia de las Almas', 'Novela', '1956', 'Nordical');
+INSERT INTO LIBROS VALUES ('978-92-75486-94-2', 'El Principito', 'Novela', '1969', 'Salamandra');
 
+
+-- Tabla EJEMPLARES
+
+-- Plantilla: INSERT INTO EJEMPLARES VALUES('Cod_ejemplar, 'isbnlibroE');
+
+INSERT INTO EJEMPLARES VALUES ('235473JKU','978-84-37604-94-7');
+INSERT INTO EJEMPLARES VALUES ('283657DHJ','978-92-57508-94-8');
+INSERT INTO EJEMPLARES VALUES ('325735KDJ','978-99-38201-94-0');
+INSERT INTO EJEMPLARES VALUES ('239075EKD','978-95-77894-94-1');
+INSERT INTO EJEMPLARES VALUES ('471295KFE','978-92-75486-94-2');
+
+
+-- Tabala AUTOR
+
+-- Plantilla: INSERT INTO AUTOR VALUES ('Nombre_Autor', 'FechaNac', 'Nacionalidad');
+
+INSERT INTO AUTOR VALUES ('Carlos Santos', TO_DATE('02/04/1940', 'DD/MM/YYYY'), 'Española');
+INSERT INTO AUTOR VALUES ('Juan Perino', TO_DATE('05/12/1950', 'DD/MM/YYYY'), 'Italiana');
+INSERT INTO AUTOR VALUES ('Antonio Luengo', TO_DATE('09/07/1968', 'DD/MM/YYYY'), 'Francesa');
+INSERT INTO AUTOR VALUES ('Joseph Lopez', TO_DATE('18/05/1971', 'DD/MM/YYYY'), 'Americana');
+
+
+-- Tabla LIBROS_AUTORES
+
+-- Plantilla: INSERT INTO LIBROS_AUTORES VALUES ('Nombre_Autor', 'ISBN');
+
+INSERT INTO LIBROS_AUTORES VALUES ('Carlos Santos', '978-84-37604-94-7');
+INSERT INTO LIBROS_AUTORES VALUES ('Juan Perino', '978-92-57508-94-8');
+INSERT INTO LIBROS_AUTORES VALUES ('Antonio Luengo', '978-99-38201-94-0');
+INSERT INTO LIBROS_AUTORES VALUES ('Joseph Lopez', '978-95-77894-94-1');
+
+
+-- Tabla EMPLEADOS
+
+-- Plantilla: INSERT INTO EMPLEADOS VALUES ('DNI', 'Nombre', 'FechaNac', 'Direccion', 'Genero', 'Sueldo', 'Tipo');
+
+INSERT INTO EMPLEADOS VALUES ('32537832K', 'Carmen Sampedro', TO_DATE('04/09/1979', 'DD/MM/YYYY'), 'Travesía Jana', 'F', '3000';
+INSERT INTO EMPLEADOS VALUES ('47642821F', 'Paulo Benítez', TO_DATE('29/08/2001', 'DD/MM/YYYY'), 'Paseo Biel', 'M', '2000';
+INSERT INTO EMPLEADOS VALUES ('94246532C', 'Paul Barrero', TO_DATE('07/04/1971', 'DD/MM/YYYY'), 'Camiño Montes 20', 'M', '1000';
+INSERT INTO EMPLEADOS VALUES ('27532561E', 'Tomas Fuente', TO_DATE('06/12/1970', 'DD/MM/YYYY'), 'Carrer Velasco 7', 'M', '1200';
+INSERT INTO EMPLEADOS VALUES ('37765232T', 'Maria Sol Marcos', TO_DATE('07/08/1986', 'DD/MM/YYYY'), 'Ruela Roque 0', 'F', '1600';
+INSERT INTO EMPLEADOS VALUES ('46372616P', 'Jose Ignacio Sanmartin', TO_DATE('07/09/2003', 'DD/MM/YYYY'), 'Ronda Miguel 8', 'M', '4200';
+INSERT INTO EMPLEADOS VALUES ('56647381O', 'Barbara Acuña', TO_DATE('20/04/1995', 'DD/MM/YYYY'), 'Calle Reynoso 17', 'F', '2200';
+
+
+-- Tabla PROOVEDORES
+
+-- Plantilla: INSERT INTO PROOVEDORES VALUES ('CIF', 'Nombre', 'Telefono', 'Email', 'Direccion');
+
+INSERT INTO PROOVEDORES VALUES ('B23456789', 'Librería de la Mancha', '9456789', ')

@@ -1,0 +1,35 @@
+--+-- Consultas sencillas
+
+-- Muestra todos los socios.
+
+SELECT * FROM SOCIOS;
+
+
+-- Muestra los DNI de los socios que tienen penalizaciones por 'Sin pago'.
+
+SELECT DNI FROM PENALIZACIONES WHERE Observacion = 'Sin pago';
+
+
+-- Lista los libros que se publicaron después del año 1960.
+
+SELECT Titulo FROM LIBROS WHERE AnioPublicacion > 1960;
+
+
+-- Muestra los Autores que hayan nacido despues de los años 50.
+
+SELECT Nombre_Autor FROM AUTOR WHERE YEAR(FechaNac) > 1951;
+
+
+
+--+-- Vistas
+
+-- Crea una vista con los empleados con trabajaran temporalmente en la librería.
+ CREATE VIEW TempEmp as
+ SELECT Nombre 
+ FROM EMPLEADOS
+ WHERE Tipo = 'TEMPORAL';
+
+
+
+
+

@@ -4,11 +4,9 @@
 
 SELECT * FROM SOCIOS;
 
-
 -- Muestra los DNI de los socios que tienen penalizaciones por 'Sin pago'.
 
 SELECT DNISocioP as "DNI" FROM PENALIZACIONES WHERE Observacion = 'Sin pago';
-
 
 -- Lista los libros que se publicaron después del año 1960.
 
@@ -18,7 +16,6 @@ SELECT Titulo FROM LIBROS WHERE AnioPublicacion > 1960;
 -- Muestra los Autores que hayan nacido despues de los años 50.
 
 SELECT Nombre_Autor FROM AUTOR WHERE EXTRACT(YEAR FROM FechaNac) > 1951;
-
 
 
 --+-- Vistas
@@ -42,7 +39,6 @@ WHERE la.ISBN_Libro = l.ISBN;
 
 -- Para ver la vista
 SELECT * FROM Libros_Autores;
-
 
 
 --+-- Subconsultas

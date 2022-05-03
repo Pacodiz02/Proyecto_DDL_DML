@@ -7,7 +7,7 @@ SELECT * FROM SOCIOS;
 
 -- Muestra los DNI de los socios que tienen penalizaciones por 'Sin pago'.
 
-SELECT DNI FROM PENALIZACIONES WHERE Observacion = 'Sin pago';
+SELECT DNISocioP as "DNI" FROM PENALIZACIONES WHERE Observacion = 'Sin pago';
 
 
 -- Lista los libros que se publicaron después del año 1960.
@@ -17,7 +17,7 @@ SELECT Titulo FROM LIBROS WHERE AnioPublicacion > 1960;
 
 -- Muestra los Autores que hayan nacido despues de los años 50.
 
-SELECT Nombre_Autor FROM AUTOR WHERE YEAR(FechaNac) > 1951;
+SELECT Nombre_Autor FROM AUTOR WHERE EXTRACT(YEAR FROM FechaNac) > 1951;
 
 
 
@@ -28,6 +28,111 @@ SELECT Nombre_Autor FROM AUTOR WHERE YEAR(FechaNac) > 1951;
  SELECT Nombre 
  FROM EMPLEADOS
  WHERE Tipo = 'TEMPORAL';
+
+-- Para ver la vista
+SELECT * FROM TempEmp;
+
+
+-- Crea una vista con los libros y el nombre de su respectivo autor/es.
+
+CREATE VIEW Libros_Autores as
+SELECT l.Titulo as "Título del Libro", la.N_Autor as "Nombre del Autor"
+FROM LIBRO_AUTOR la, LIBROS l
+WHERE la.ISBN_Libro = l.ISBN;
+
+-- Para ver la vista
+SELECT * FROM Libros_Autores;
+
+
+
+--+-- Subconsultas
+
+-- Muestra los Nombres de los empleados que tienen el mismo genero que 'Barbara Acuca'
+
+SELECT Nombre
+FROM EMPLEADOS
+WHERE Genero= (SELECT Genero
+	       FROM EMPLEADOS
+	       WHERE Nombre = 'Barbara Acuca');
+
+
+--+-- Combinaciones de tablas
+
+-- Muestra los socios que tengan penalizaciones ordenados alfabeticamente.
+
+SELECT s.Nombre
+FROM SOCIOS s, PENALIZACIONES p
+WHERE s.DNI = p.DNISocioP ORDER BY Nombre asc;
+
+
+--+-- Inserción de registros. Consultas de datos anexados.
+
+-- Inserta en nuevo empleado que tenga el mismo sueldo y tipo que 'Paul Barrero'
+
+INSERT INTO EMPLEADOS(DNI,Nombre,FechaNac,Direccion,Genero)
+SELECT '29530596E','Angel Suarez',TO_DATE('16/12/2003','DD/MM/YYYY'),'Calle Fuengirola 1','M'
+FROM EMPLEADOS
+WHERE Nombre='Paul Barrero'
+
+
+--+-- Modificacion de registros. Consultas de actualización.
+
+-- Actualiza el telefono del proovedor con CIF B23456789.
+
+UPDATE PROOVEDORES
+SET Telefono = '988775689' WHERE CIF='B23456789';
+
+-- Actualiza la fecha de devolucion del Socio que tiene como DNI el 12345678A.
+ 
+UPDATE PRESTAMOS
+SET FechaDevolucion = '03/06/2021' WHERE DNISocioP='12345678A'
+
+
+--+-- Borrado de registros. Consultas de eliminación.
+
+-- Elimina los socios menores de edad.
+
+DELETE FROM SOCIOS WHERE MONTHS_BETWEEN(Sysdate,Fecha_nacimiento)<216
+
+
+--+-- Group by y having
+
+--+-- Outer joins. Combinaciones externas.
+
+--+-- Consultas con operadores de conjuntos.
+
+--+-- Subconsultas correlacionadas.
+
+--+-- Consulta que incluya varios tipos de los indicados anteriormente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -74,15 +74,15 @@ CONSTRAINT ck_dni_empleados CHECK (REGEXP_LIKE(DNI, '^[0-9]{8}[A-Z]{1}'))
 );
 
 
-CREATE TABLE PROOVEDORES (
+CREATE TABLE PROVEEDORES (
 CIF VARCHAR2(9),
 Nombre VARCHAR2(30),
 Telefono VARCHAR2(9),
 Email VARCHAR2(40),
-CONSTRAINT pk_proovedores PRIMARY KEY (CIF),
-CONSTRAINT nn_Nombre_proovedor CHECK (Nombre IS NOT NULL),
-CONSTRAINT uk_proovedores UNIQUE (Telefono),
-CONSTRAINT ck_telefono_proovedor CHECK (REGEXP_LIKE(Telefono, '^[9]{1}[0-9]{8}'))
+CONSTRAINT pk_provedores PRIMARY KEY (CIF),
+CONSTRAINT nn_Nombre_provedor CHECK (Nombre IS NOT NULL),
+CONSTRAINT uk_provedores UNIQUE (Telefono),
+CONSTRAINT ck_telefono_provedor CHECK (REGEXP_LIKE(Telefono, '^[9]{1}[0-9]{8}'))
 );
 
 
@@ -101,14 +101,14 @@ CONSTRAINT ck_fechadevolucion CHECK (FechaDevolucion > FechaPrestamo)
 );
 
 
-CREATE TABLE PROOV (
-Fecha_proov DATE,
+CREATE TABLE PROV (
+Fecha_prov DATE,
 CIF_Pr VARCHAR2(9),
 ISBN_LibroPr VARCHAR2(17),
 Cantidad NUMBER(9) DEFAULT 1,
-CONSTRAINT pk_proov PRIMARY KEY (Fecha_proov, CIF_Pr, ISBN_LibroPr),
-CONSTRAINT fk_proov_proovedores FOREIGN KEY (CIF_Pr) REFERENCES PROOVEDORES(CIF),
-CONSTRAINT fk_proov_libros FOREIGN KEY (ISBN_LibroPr) REFERENCES LIBROS(ISBN),
+CONSTRAINT pk_prov PRIMARY KEY (Fecha_prov, CIF_Pr, ISBN_LibroPr),
+CONSTRAINT fk_prov_provedores FOREIGN KEY (CIF_Pr) REFERENCES PROVEEDORES(CIF),
+CONSTRAINT fk_prov_libros FOREIGN KEY (ISBN_LibroPr) REFERENCES LIBROS(ISBN),
 CONSTRAINT nn_Cantidad CHECK (Cantidad IS NOT NULL)
 );
 
@@ -119,8 +119,8 @@ CONSTRAINT nn_Cantidad CHECK (Cantidad IS NOT NULL)
 -- Añade la columna Sueldo en la tabla EMPLEADOS, Numérico(6) con dos decimales.
 ALTER TABLE EMPLEADOS ADD Sueldo NUMBER(6,2);
 
--- Añade la columna Direccion en la tabla PROOVEDORES, Cadena de caracterese de longitud 50.
-ALTER TABLE PROOVEDORES ADD Direccion VARCHAR2(50);
+-- Añade la columna Direccion en la tabla PROVEEDORES, Cadena de caracterese de longitud 50.
+ALTER TABLE PROVEEDORES ADD Direccion VARCHAR2(50);
 
 -- Añade la columna Fecha_nacimiento en la tabla SOCIOS, de tipo Fecha.
 ALTER TABLE SOCIOS ADD Fecha_nacimiento DATE;
@@ -242,13 +242,13 @@ INSERT INTO EMPLEADOS (DNI, Nombre, FechaNac, Direccion, Genero, Sueldo) VALUES 
 INSERT INTO EMPLEADOS VALUES ('56647381O', 'Barbara Acuca', TO_DATE('20/04/1995', 'DD/MM/YYYY'), 'Calle Reynoso 17', 'F', '2200', 'FIJO');
 
 
--- Tabla PROOVEDORES
+-- Tabla PROVEEDORES
 
--- Plantilla: INSERT INTO PROOVEDORES VALUES ('CIF', 'Nombre', 'Telefono', 'Email', 'Direccion');
+-- Plantilla: INSERT INTO PROVEEDORES VALUES ('CIF', 'Nombre', 'Telefono', 'Email', 'Direccion');
 
-INSERT INTO PROOVEDORES VALUES ('B23456789', 'Librería de la Mancha', '945678944', 'librerialamancha@gmail.com', 'Travesía de la Mancha');
-INSERT INTO PROOVEDORES VALUES ('B34567891', 'Libros Castillo', '975164944', 'libroscastillo@gmail.com', 'Calle Castillo');
-INSERT INTO PROOVEDORES VALUES ('B45678912', 'Almacenes Jimenez', '983264273', 'almacenesjimenez@gmail.com', 'Calle Jimenez');
+INSERT INTO PROVEEDORES VALUES ('B23456789', 'Librería de la Mancha', '945678944', 'librerialamancha@gmail.com', 'Travesía de la Mancha');
+INSERT INTO PROVEEDORES VALUES ('B34567891', 'Libros Castillo', '975164944', 'libroscastillo@gmail.com', 'Calle Castillo');
+INSERT INTO PROVEEDORES VALUES ('B45678912', 'Almacenes Jimenez', '983264273', 'almacenesjimenez@gmail.com', 'Calle Jimenez');
 
 
 -- Tabla PRESTAMOS
@@ -263,12 +263,14 @@ INSERT INTO PRESTAMOS VALUES (TO_DATE('04/11/2021', 'DD/MM/YYYY'), '27642461E', 
 INSERT INTO PRESTAMOS VALUES (TO_DATE('01/01/2019', 'DD/MM/YYYY'), '27642461E', '471295KFE', '27532561E', TO_DATE('01/01/2020', 'DD/MM/YYYY'));
 
 
--- Tabla PROOV
+-- Tabla PROV
 
--- Plantilla: INSERT INTO PROOV VALUES (TO_DATE('Fecha_proov','DD/MM/YYYY'), 'CIF_Pr', 'ISBN_LibroPr', 'Cantidad');
+-- Plantilla: INSERT INTO PROV VALUES (TO_DATE('Fecha_prov','DD/MM/YYYY'), 'CIF_Pr', 'ISBN_LibroPr', 'Cantidad');
 
-INSERT INTO PROOV VALUES (TO_DATE('03/05/2021', 'DD/MM/YYYY'), 'B23456789', '978-84-37604-94-7', '2');
-INSERT INTO PROOV VALUES (TO_DATE('04/06/2021', 'DD/MM/YYYY'), 'B23456789', '978-92-57508-94-8', '1');
-INSERT INTO PROOV VALUES (TO_DATE('07/11/2019', 'DD/MM/YYYY'), 'B34567891', '978-99-38201-94-0', '5');
-INSERT INTO PROOV (Fecha_proov,CIF_Pr,ISBN_LibroPr) VALUES (TO_DATE('08/11/2019', 'DD/MM/YYYY'), 'B34567891', '978-95-77894-94-1');
-INSERT INTO PROOV (Fecha_proov,CIF_Pr,ISBN_LibroPr) VALUES (TO_DATE('05/01/2020', 'DD/MM/YYYY'), 'B45678912', '978-92-75486-94-2');
+INSERT INTO PROV VALUES (TO_DATE('03/05/2021', 'DD/MM/YYYY'), 'B23456789', '978-84-37604-94-7', '2');
+INSERT INTO PROV VALUES (TO_DATE('04/06/2021', 'DD/MM/YYYY'), 'B23456789', '978-92-57508-94-8', '1');
+INSERT INTO PROV VALUES (TO_DATE('07/11/2019', 'DD/MM/YYYY'), 'B34567891', '978-99-38201-94-0', '5');
+INSERT INTO PROV (Fecha_prov,CIF_Pr,ISBN_LibroPr) VALUES (TO_DATE('08/11/2019', 'DD/MM/YYYY'), 'B34567891', '978-95-77894-94-1');
+INSERT INTO PROV (Fecha_prov,CIF_Pr,ISBN_LibroPr) VALUES (TO_DATE('05/01/2020', 'DD/MM/YYYY'), 'B45678912', '978-92-75486-94-2');
+INSERT INTO PROV VALUES (TO_DATE('12/11/2019', 'DD/MM/YYYY'), 'B23456789', '978-99-38201-94-0', '3');
+INSERT INTO PROV VALUES (TO_DATE('13/11/2019', 'DD/MM/YYYY'), 'B23456789', '978-99-38201-94-0', '3');

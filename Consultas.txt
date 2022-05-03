@@ -152,38 +152,3 @@ SELECT CIF_Pr FROM PROOV;
 
 SELECT Nombre, DNI FROM EMPLEADOS WHERE sueldo = (SELECT MAX(Sueldo)
 						  FROM EMPLEADOS);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

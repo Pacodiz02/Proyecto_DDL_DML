@@ -87,7 +87,7 @@ SET Telefono = '988775689' WHERE CIF='B23456789';
 UPDATE PRESTAMOS
 SET FechaDevolucion = '03/06/2021' WHERE DNISocioP='12345678A'
 
-
+ 
 --+-- Borrado de registros. Consultas de eliminación.
 
 -- Elimina los socios menores de edad.
@@ -97,13 +97,62 @@ DELETE FROM SOCIOS WHERE MONTHS_BETWEEN(Sysdate,Fecha_nacimiento)<216
 
 --+-- Group by y having
 
+-- Muestra el nombre y el DNI del empleado que más prestamos realizó.
+
+SELECT Nombre, DNI
+FROM EMPLEADOS
+WHERE DNI IN (SELECT DNI_empP
+	      FROM PRESTAMOS
+	      GROUP BY DNI_empP
+	      HAVING COUNT(*)=(SELECT MAX(COUNT(*))
+			       FROM PRESTAMOS
+			       GROUP BY DNI_empP));
+
+
+-- Muestra los nombres de los socios que tienen más de 1 prestamos.
+
+SELECT Nombre 
+FROM SOCIOS 
+WHERE DNI IN (SELECT DNI_Socio 
+	      FROM PRESTAMOS 
+	      GROUP BY DNI_Socio 
+	      HAVING COUNT(*) > 1);
+
+
 --+-- Outer joins. Combinaciones externas.
+
+-- Mostrar todos los libros junto al numero de proovedores que prooveen ese libro. 
+-- (Tambien se muestran los libros que no tienen proovedores)
+
+SELECT l.Titulo, count(p.CIF) as "Proovedores"
+FROM PROOV pr left join PROOVEDORES p ON p.CIF = pr.CIF_Pr, LIBROS l
+WHERE ISBN_LibroPr = ISBN
+GROUP BY l.Titulo
+ORDER BY count(p.CIF) desc;
+
 
 --+-- Consultas con operadores de conjuntos.
 
+-- Muestra los empleados que nacieron antes del año 1990 y los socios que nacieron después de ese mismo año.
+
+SELECT Nombre FROM EMPLEADOS WHERE EXTRACT(YEAR FROM FechaNac) < '1990'
+UNION
+SELECT Nombre FROM SOCIOS WHERE EXTRACT(YEAR FROM Fecha_nacimiento) > '1990';
+
+-- Muestra los proveedores que no han proveeido ningún libro.
+
+SELECT CIF FROM PROOVEDORES
+MINUS
+SELECT CIF_Pr FROM PROOV;
+
+
 --+-- Subconsultas correlacionadas.
 
---+-- Consulta que incluya varios tipos de los indicados anteriormente.
+-- Muestra el nombre y DNI de los empleados cuyo sueldo sea igual al máximo de empleados.
+
+SELECT Nombre, DNI FROM EMPLEADOS WHERE sueldo = (SELECT MAX(Sueldo)
+						  FROM EMPLEADOS);
+
 
 
 

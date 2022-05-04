@@ -149,7 +149,7 @@ ALTER TABLE EMPLEADOS DROP CONSTRAINT uk_empleados;
 -- Desactiva la restricción de la columna Editorial de la tabla LIBROS.(En PostgreSQL no nos deja deshabilitar la restricción, tenenemos que eliminarla.)
 ALTER TABLE LIBROS DROP CONSTRAINT ck_mayusculas_editorial;
 -- Para añadirla acrtivarla de nuevo tendremos que añadirle con:
-ALTER TABLE LIBROS ADD CONSTRAINT ck_mayusculas_editorial CHECK (Editorial ~ '[A-Z]{10}');
+-- ALTER TABLE LIBROS ADD CONSTRAINT ck_mayusculas_editorial CHECK (Editorial ~ '[A-Z]{10}');
 
 
 
@@ -274,3 +274,5 @@ INSERT INTO PROV VALUES ('2021/06/04', 'B23456789', '978-92-57508-94-8', '1');
 INSERT INTO PROV VALUES ('2019/11/07', 'B34567891', '978-99-38201-94-0', '5');
 INSERT INTO PROV (Fecha_PROV,CIF_Pr,ISBN_LibroPr) VALUES ('2019/11/08', 'B34567891', '978-95-77894-94-1');
 INSERT INTO PROV (Fecha_PROV,CIF_Pr,ISBN_LibroPr) VALUES ('2020/01/05', 'B45678912', '978-92-75486-94-2');
+INSERT INTO PROV VALUES (TO_DATE('12/11/2019', 'DD/MM/YYYY'), 'B23456789', '978-99-38201-94-0', '3');
+INSERT INTO PROV VALUES (TO_DATE('13/11/2019', 'DD/MM/YYYY'), 'B23456789', '978-99-38201-94-0', '3');

@@ -73,15 +73,15 @@ WHERE Nombre='Paul Barrero'
 
 --+-- Modificacion de registros. Consultas de actualización.
 
--- Actualiza el telefono del proovedor con CIF B23456789.
+-- Actualiza el telefono del PROVedor con CIF B23456789.
 
-UPDATE PROOVEDORES
+UPDATE PROVEEDORES
 SET Telefono = '988775689' WHERE CIF='B23456789';
 
 -- Actualiza la fecha de devolucion del Socio que tiene como DNI el 12345678A.
  
 UPDATE PRESTAMOS
-SET FechaDevolucion = '03/06/2021' WHERE DNISocioP='12345678A'
+SET FechaDevolucion = '03/06/2021' WHERE DNI_Socio='12345678A'
 
  
 --+-- Borrado de registros. Consultas de eliminación.
@@ -117,11 +117,11 @@ WHERE DNI IN (SELECT DNI_Socio
 
 --+-- Outer joins. Combinaciones externas.
 
--- Mostrar todos los libros junto al numero de proovedores que prooveen ese libro. 
--- (Tambien se muestran los libros que no tienen proovedores)
+-- Mostrar todos los libros junto al numero de PROVEEDORES que PROVeen ese libro. 
+-- (Tambien se muestran los libros que no tienen PROVEEDORES)
 
-SELECT l.Titulo, count(p.CIF) as "Proovedores"
-FROM PROOV pr left join PROOVEDORES p ON p.CIF = pr.CIF_Pr, LIBROS l
+SELECT l.Titulo, count(p.CIF) as "PROVEEDORES"
+FROM PROV pr left join PROVEEDORES p ON p.CIF = pr.CIF_Pr, LIBROS l
 WHERE ISBN_LibroPr = ISBN
 GROUP BY l.Titulo
 ORDER BY count(p.CIF) desc;
@@ -137,9 +137,9 @@ SELECT Nombre FROM SOCIOS WHERE EXTRACT(YEAR FROM Fecha_nacimiento) > '1990';
 
 -- Muestra los proveedores que no han proveeido ningún libro.
 
-SELECT CIF FROM PROOVEDORES
+SELECT CIF FROM PROVEEDORES
 MINUS
-SELECT CIF_Pr FROM PROOV;
+SELECT CIF_Pr FROM PROV;
 
 
 --+-- Subconsultas correlacionadas.

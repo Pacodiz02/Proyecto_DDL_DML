@@ -95,9 +95,9 @@ DELETE FROM PENALIZACIONES WHERE DNISocioP IN (SELECT DNI FROM SOCIOS WHERE EXTR
 
 SELECT * FROM PENALIZACIONES WHERE DNISocioP IN (SELECT DNI FROM SOCIOS WHERE EXTRACT(YEAR FROM age(now(),fecha_nacimiento))*12 + EXTRACT(MONTH FROM age(now(),fecha_nacimiento))<216);
 
-DELETE FROM SOCIOS WHERE EXTRACT(YEAR FROM age(now(),fecha_nacimiento))*12 + EXTRACT(MONTH FROM age(now(),fecha_nacimiento))<216);
+DELETE FROM SOCIOS WHERE EXTRACT(YEAR FROM age(now(),fecha_nacimiento))*12 + EXTRACT(MONTH FROM age(now(),fecha_nacimiento))<216;
 
-SELECT * FROM SOCIOS WHERE EXTRACT(YEAR FROM age(now(),fecha_nacimiento))*12 + EXTRACT(MONTH FROM age(now(),fecha_nacimiento))<216);
+SELECT * FROM SOCIOS WHERE EXTRACT(YEAR FROM age(now(),fecha_nacimiento))*12 + EXTRACT(MONTH FROM age(now(),fecha_nacimiento))<216;
 
 --+-- Group by y having
 

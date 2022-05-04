@@ -27,14 +27,14 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | EJEMPLARES        |                                 |
 |-------------------|---------------------------------|
 | **Cod_ejemplar** | Cadena de caracteres, tamaño 9   |
-| _ISBN_LibroE_     | Cadena de caracteres, tamaño 13 |
+| _ISBN_LibroE_     | Cadena de caracteres, tamaño 17 |
 
 
 ### TABLA LIBROS
 
 | LIBROS         |                                 |                                 |
 |----------------|---------------------------------|---------------------------------|
-| **ISBN**       | Cadena de caracteres, tamaño 13 |                                 |
+| **ISBN**       | Cadena de caracteres, tamaño 17 |                                 |
 | Titulo         | Cadena de caracteres, tamaño 30 | No nulo                         |
 | Genero         | Cadena de caracteres, tamaño 10 |                                 |
 | AñoPublicacion | Numérico, tamaño 4              |                                 |  
@@ -55,7 +55,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | AUTORES      |                                 |
 |--------------|---------------------------------|
 | ***N_Autor***      | Cadena de caracteres, tamaño 40 |
-| ***ISBN_libro***     | Cadena de caracteres, tamaño 13 |
+| ***ISBN_libro***     | Cadena de caracteres, tamaño 17 |
 
 
 ### TABLA EMPLEADOS
@@ -97,7 +97,7 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 | ***CIF_Pr***  | Cadena de caracteres, tamaño 9  |                 |
 | **Fecha_proov** | Fecha                         |                 |
 | Cantidad      | Cadena de caracteres, tamaño 9  | No Nulo         |
-| ***ISBN_LibroPr***  | Cadena de caracteres, tamaño 13 |           |
+| ***ISBN_LibroPr***  | Cadena de caracteres, tamaño 17|           |
 
 
 +------------------------------------------------------------------------------+

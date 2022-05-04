@@ -106,8 +106,13 @@ Nota: Los caracteres en negrita son PK y cursiva FK.
 Añade las siguientes restricciones, una vez creadas las tablas:
 
 - Añade la columna Sueldo en la tabla EMPLEADOS, Numérico(6) con dos decimales.
-- Modifica la columna AñoPublicacion de la tabla LIBROS cambiando el tipo de dato a fecha.
-- Elimina la columna teléfono de la tabla SOCIOS.
-- La referencia de los libros solo tienen carácteres numéricos, aunque sigue siendo de tipo cadena.
+- Añade la columna Direccion en la tabla PROVEEDORES, Cadena de caracterese de longitud 50.
+- Añade la columna Fecha_nacimiento en la tabla SOCIOS, de tipo Fecha.
+- Añade la columna tipo en la tabla EMPLEADOS, Cadena de caracteres.
+- Modifica la columna tipo en la tabla EMPLEADOS y pon por defecto 'TEMPORAL'.
+- Modifica la columna Observacion de la tabla PENALIZACIONES reduciendola a 500 caracteres.
+- Elimina la columna email de la tabla SOCIOS.
+- La Nacionalidad de los autores estará comprendida entre las siguientes: Española, Francesa, Italiana, Americana, Alemana y Japonesa.
+- El ISBN de los libros tienen el siguiente formato: 978-84-37604-94-7
 - Elimina la restricción de la columna Dirección de la tabla EMPLEADOS.
 - Desactiva la restricción de la columna Editorial de la tabla LIBROS.
